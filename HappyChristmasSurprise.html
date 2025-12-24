@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎄 Christmas Surprise for Friends 🎁</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f9b0f, #000000);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      max-width: 360px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.5;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background: #ffcc00;
+      color: #333;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #ffe066;
+    }
+
+    /* ❄️ Snowflakes */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: white;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    /* 🔊 Music notice */
+    .note {
+      font-size: 0.8em;
+      opacity: 0.8;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔊 Background Music -->
+  <audio id="music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>🎄 Merry Christmas, Friends!</h1>
+    <p id="message">
+      Click the button to start the magic 🎁🎶
+    </p>
+    <button onclick="startMagic()">Open Surprise</button>
+    <div class="note">(Music will play after clicking)</div>
+  </div>
+
+  <script>
+    function startMagic() {
+      document.getElementById("message").innerHTML =
+        "🎉 Cheers to friendship! 🎉<br><br>" +
+        "Thanks for all the laughs, memories, and crazy moments this year 😄<br>" +
+        "May your Christmas be full of joy, food, fun, and good vibes ✨🎄";
+
+      // ▶️ Play music
+      document.getElementById("music").play();
+    }
+
+    // ❄️ Snow animation
+    function createSnowflake() {
+      const snowflake = document.createElement("div");
+      snowflake.className = "snowflake";
+      snowflake.innerHTML = "❄";
+      snowflake.style.left = Math.random() * window.innerWidth + "px";
+      snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+      snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => snowflake.remove(), 10000);
+    }
+
+    setInterval(createSnowflake, 200);
+  </script>
+
+</body>
+</html>
